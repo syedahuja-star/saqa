@@ -23,34 +23,20 @@
         --invalid-red: #8b1a1a;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         font-family: "DM Sans", sans-serif;
         background-color: #eeeee9;
         background-image:
-          repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 39px,
-            rgba(0, 102, 51, 0.04) 40px
-          ),
-          repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 39px,
-            rgba(0, 102, 51, 0.04) 40px
-          );
+          repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,102,51,0.04) 40px),
+          repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,102,51,0.04) 40px);
         min-height: 100vh;
         color: var(--saqa-text);
         padding: 30px 16px;
       }
 
-      /* ── TOP GOVERNMENT BANNER ── */
+      /* ── GOV BANNER ── */
       .gov-banner {
         max-width: 900px;
         margin: 0 auto 0px;
@@ -64,24 +50,7 @@
         align-items: center;
         border-radius: 4px 4px 0 0;
       }
-      .gov-banner span {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .gov-flag {
-        display: inline-flex;
-        width: 22px;
-        height: 14px;
-        border-radius: 2px;
-        overflow: hidden;
-        flex-shrink: 0;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-      }
-      .gov-flag svg {
-        width: 100%;
-        height: 100%;
-      }
+      .gov-banner span { display: flex; align-items: center; gap: 6px; }
 
       /* ── MAIN CARD ── */
       .card {
@@ -90,7 +59,7 @@
         background: #fff;
         border: 1px solid var(--saqa-border);
         border-top: none;
-        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 32px rgba(0,0,0,0.10);
         border-radius: 0 0 6px 6px;
         overflow: hidden;
       }
@@ -107,31 +76,8 @@
         width: 8px;
         background: linear-gradient(180deg, var(--saqa-gold) 0%, #9b6b18 100%);
       }
-      .header-body {
-        padding: 24px 28px 22px;
-      }
-      .header-logo-row {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 10px;
-      }
-      .saqa-emblem {
-        width: 52px;
-        height: 52px;
-        background: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Crimson Text", serif;
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--saqa-green);
-        letter-spacing: -0.5px;
-        border: 2px solid var(--saqa-gold);
-        flex-shrink: 0;
-      }
+      .header-body { padding: 24px 28px 22px; }
+      .header-logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
       .header-title-block h1 {
         font-family: "Crimson Text", serif;
         font-size: 22px;
@@ -141,26 +87,26 @@
       }
       .header-title-block p {
         font-size: 11.5px;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255,255,255,0.75);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         margin-top: 3px;
       }
       .header-badge {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0,0,0,0.20);
         padding: 20px 24px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 4px;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 1px solid rgba(255,255,255,0.10);
       }
       .header-badge .nlrd-label {
         font-size: 9px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255,255,255,0.6);
       }
       .header-badge .nlrd-title {
         font-size: 11px;
@@ -170,30 +116,122 @@
         line-height: 1.3;
       }
       .header-subbar {
-        background: rgba(0, 0, 0, 0.18);
+        background: rgba(0,0,0,0.18);
         padding: 8px 28px;
         display: flex;
         align-items: center;
         gap: 18px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255,255,255,0.10);
+        flex-wrap: wrap;
       }
       .header-subbar span {
         font-size: 11px;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255,255,255,0.7);
         display: flex;
         align-items: center;
         gap: 5px;
       }
       .subbar-dot {
-        width: 5px;
-        height: 5px;
+        width: 5px; height: 5px;
         background: var(--saqa-gold);
         border-radius: 50%;
       }
 
       /* ── CONTENT ── */
-      .content {
-        padding: 32px 36px;
+      .content { padding: 32px 36px; }
+
+      /* ── MANUAL LOOKUP BOX ── */
+      .lookup-box {
+        background: var(--saqa-gray);
+        border: 1px solid var(--saqa-border);
+        border-radius: 4px;
+        padding: 20px 24px;
+        margin-bottom: 28px;
+      }
+      .lookup-box-title {
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--saqa-gold);
+        font-weight: 600;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .lookup-box-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--saqa-border);
+      }
+      .lookup-box > p {
+        font-size: 12.5px;
+        color: var(--saqa-muted);
+        margin-bottom: 14px;
+        line-height: 1.5;
+      }
+      .lookup-row {
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+      }
+      .lookup-input {
+        flex: 1;
+        border: 1.5px solid var(--saqa-border);
+        border-radius: 3px;
+        padding: 11px 14px;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        color: var(--saqa-navy);
+        background: #fff;
+        letter-spacing: 0.05em;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .lookup-input:focus {
+        border-color: var(--saqa-green);
+        box-shadow: 0 0 0 3px rgba(0,102,51,0.09);
+      }
+      .lookup-input::placeholder {
+        color: #aab3a4;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0;
+        font-size: 13px;
+      }
+      .lookup-btn {
+        background: var(--saqa-green);
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 11px 22px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .lookup-btn:hover { background: var(--saqa-green-light); }
+      .lookup-btn:active { background: #004d26; }
+      .lookup-hint {
+        font-size: 11px;
+        color: var(--saqa-muted);
+        margin-top: 9px;
+        display: flex;
+        align-items: flex-start;
+        gap: 5px;
+        line-height: 1.4;
+      }
+      .lookup-hint-icon {
+        color: var(--saqa-gold);
+        font-size: 12px;
+        flex-shrink: 0;
+        margin-top: 1px;
       }
 
       /* ── STATUS BOX ── */
@@ -206,23 +244,10 @@
         gap: 18px;
         border-left: 5px solid transparent;
       }
-      .status-valid {
-        background: #f0f7f3;
-        border-color: var(--saqa-green);
-      }
-      .status-invalid {
-        background: #fbf0f0;
-        border-color: var(--invalid-red);
-      }
-      .status-loading {
-        background: #f5f5ee;
-        border-color: #999;
-      }
-      .status-icon {
-        font-size: 32px;
-        line-height: 1;
-        flex-shrink: 0;
-      }
+      .status-valid   { background: #f0f7f3; border-color: var(--saqa-green); }
+      .status-invalid { background: #fbf0f0; border-color: var(--invalid-red); }
+      .status-loading { background: #f5f5ee; border-color: #999; }
+      .status-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
       .status-body h2 {
         font-family: "Crimson Text", serif;
         font-size: 21px;
@@ -230,17 +255,9 @@
         color: var(--saqa-green);
         margin-bottom: 5px;
       }
-      .status-invalid .status-body h2 {
-        color: var(--invalid-red);
-      }
-      .status-loading .status-body h2 {
-        color: var(--saqa-navy);
-      }
-      .status-body p {
-        font-size: 13.5px;
-        color: var(--saqa-muted);
-        line-height: 1.55;
-      }
+      .status-invalid .status-body h2 { color: var(--invalid-red); }
+      .status-loading .status-body h2 { color: var(--saqa-navy); }
+      .status-body p { font-size: 13.5px; color: var(--saqa-muted); line-height: 1.55; }
       .status-ref {
         margin-top: 10px;
         display: inline-block;
@@ -252,9 +269,7 @@
         border-radius: 2px;
         font-weight: 500;
       }
-      .status-invalid .status-ref {
-        background: var(--invalid-red);
-      }
+      .status-invalid .status-ref { background: var(--invalid-red); }
 
       /* ── SECTION LABEL ── */
       .section-label {
@@ -268,12 +283,7 @@
         align-items: center;
         gap: 8px;
       }
-      .section-label::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--saqa-border);
-      }
+      .section-label::after { content: ''; flex: 1; height: 1px; background: var(--saqa-border); }
 
       /* ── DETAILS PANEL ── */
       .details-panel {
@@ -285,10 +295,10 @@
       }
       .details-header {
         background: var(--saqa-navy);
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255,255,255,0.9);
         padding: 12px 20px;
         font-size: 12px;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.10em;
         text-transform: uppercase;
         font-weight: 500;
         display: flex;
@@ -303,40 +313,24 @@
         border-radius: 2px;
         letter-spacing: 0.05em;
       }
-
-      .details-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
+      .details-grid { display: grid; grid-template-columns: 1fr 1fr; }
       .detail-cell {
         padding: 14px 20px;
         border-bottom: 1px solid var(--saqa-border);
         border-right: 1px solid var(--saqa-border);
       }
-      .detail-cell:nth-child(even) {
-        border-right: none;
-      }
-      .detail-cell:nth-last-child(-n + 2) {
-        border-bottom: none;
-      }
-      .detail-cell.full-width {
-        grid-column: 1 / -1;
-        border-right: none;
-      }
+      .detail-cell:nth-child(even) { border-right: none; }
+      .detail-cell:nth-last-child(-n+2) { border-bottom: none; }
+      .detail-cell.full-width { grid-column: 1 / -1; border-right: none; }
       .detail-key {
         font-size: 10px;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.10em;
         text-transform: uppercase;
         color: var(--saqa-muted);
         margin-bottom: 5px;
         font-weight: 500;
       }
-      .detail-val {
-        font-size: 14px;
-        color: var(--saqa-text);
-        font-weight: 500;
-        line-height: 1.3;
-      }
+      .detail-val { font-size: 14px; color: var(--saqa-text); font-weight: 500; line-height: 1.3; }
       .detail-val.highlight {
         color: var(--saqa-green);
         font-family: "Crimson Text", serif;
@@ -346,7 +340,7 @@
         font-family: "Courier New", monospace;
         font-size: 13px;
         color: var(--saqa-navy);
-        background: rgba(0, 0, 0, 0.04);
+        background: rgba(0,0,0,0.04);
         display: inline-block;
         padding: 2px 8px;
         border-radius: 3px;
@@ -362,9 +356,7 @@
         padding: 3px 10px;
         border-radius: 3px;
       }
-      .nqf-badge strong {
-        color: var(--saqa-gold-light);
-      }
+      .nqf-badge strong { color: var(--saqa-gold-light); }
 
       /* ── FOUND STAMP ── */
       .found-stamp {
@@ -372,28 +364,19 @@
         align-items: center;
         gap: 20px;
         background: #f0f7f3;
-        border: 1px solid rgba(0, 102, 51, 0.2);
+        border: 1px solid rgba(0,102,51,0.2);
         border-radius: 4px;
         padding: 18px 24px;
         margin-bottom: 24px;
       }
       .stamp-icon {
-        width: 60px;
-        height: 60px;
+        width: 60px; height: 60px;
         border-radius: 50%;
         border: 3px solid var(--saqa-green);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
         flex-shrink: 0;
-        position: relative;
       }
-      .stamp-icon::after {
-        content: "✓";
-        font-size: 26px;
-        color: var(--saqa-green);
-        font-weight: bold;
-      }
+      .stamp-icon::after { content: '✓'; font-size: 26px; color: var(--saqa-green); font-weight: bold; }
       .stamp-body strong {
         display: block;
         font-family: "Crimson Text", serif;
@@ -401,22 +384,13 @@
         color: var(--saqa-green);
         margin-bottom: 3px;
       }
-      .stamp-body p {
-        font-size: 12.5px;
-        color: var(--saqa-muted);
-        line-height: 1.5;
-      }
-      .stamp-body .ts {
-        font-size: 11px;
-        color: var(--saqa-muted);
-        margin-top: 6px;
-        opacity: 0.8;
-      }
+      .stamp-body p { font-size: 12.5px; color: var(--saqa-muted); line-height: 1.5; }
+      .stamp-body .ts { font-size: 11px; color: var(--saqa-muted); margin-top: 6px; opacity: 0.8; }
 
       /* ── DISCLAIMER ── */
       .disclaimer {
         background: #fffdf5;
-        border: 1px solid rgba(200, 146, 42, 0.3);
+        border: 1px solid rgba(200,146,42,0.3);
         border-left: 4px solid var(--saqa-gold);
         padding: 14px 18px;
         border-radius: 0 4px 4px 0;
@@ -425,9 +399,7 @@
         line-height: 1.6;
         margin-bottom: 24px;
       }
-      .disclaimer strong {
-        color: var(--saqa-navy);
-      }
+      .disclaimer strong { color: var(--saqa-navy); }
 
       /* ── FOOTER ── */
       .footer {
@@ -439,126 +411,69 @@
         flex-wrap: wrap;
         gap: 10px;
       }
-      .footer-left p {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.55);
-        line-height: 1.7;
-      }
-      .footer-left strong {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 12px;
-      }
-      .footer-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 4px;
-      }
-      .footer-right a {
-        font-size: 11px;
-        color: var(--saqa-gold-light);
-        text-decoration: none;
-      }
-      .footer-right a:hover {
-        text-decoration: underline;
-      }
+      .footer-left p { font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+      .footer-left strong { color: rgba(255,255,255,0.85); font-size: 12px; }
+      .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+      .footer-right a { font-size: 11px; color: var(--saqa-gold-light); text-decoration: none; }
+      .footer-right a:hover { text-decoration: underline; }
 
       /* ── LOADER ── */
-      .loader-wrap {
-        text-align: center;
-        padding: 20px 0;
-      }
+      .loader-wrap { text-align: center; padding: 20px 0; }
       .loader {
-        width: 36px;
-        height: 36px;
+        width: 36px; height: 36px;
         border: 3px solid #ddd;
         border-top-color: var(--saqa-green);
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
         margin: 0 auto 16px;
       }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      @keyframes spin { to { transform: rotate(360deg); } }
 
       /* ── ANIMATIONS ── */
       @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(12px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
       }
-      .animate-in {
-        animation: fadeUp 0.5s ease both;
-      }
-      .animate-in-delay {
-        animation: fadeUp 0.5s ease 0.15s both;
-      }
-      .animate-in-delay2 {
-        animation: fadeUp 0.5s ease 0.3s both;
-      }
-      .animate-in-delay3 {
-        animation: fadeUp 0.5s ease 0.45s both;
-      }
+      .animate-in        { animation: fadeUp 0.5s ease both; }
+      .animate-in-delay  { animation: fadeUp 0.5s ease 0.15s both; }
+      .animate-in-delay2 { animation: fadeUp 0.5s ease 0.30s both; }
+      .animate-in-delay3 { animation: fadeUp 0.5s ease 0.45s both; }
 
       @media (max-width: 640px) {
-        .content {
-          padding: 22px 18px;
-        }
-        .details-grid {
-          grid-template-columns: 1fr;
-        }
-        .detail-cell {
-          border-right: none !important;
-        }
-        .detail-cell:nth-last-child(-n + 2) {
-          border-bottom: 1px solid var(--saqa-border);
-        }
-        .detail-cell:last-child {
-          border-bottom: none;
-        }
-        .header {
-          grid-template-columns: auto 1fr;
-        }
-        .header-badge {
-          display: none;
-        }
-        .footer {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .footer-right {
-          align-items: flex-start;
-        }
+        .content { padding: 22px 18px; }
+        .details-grid { grid-template-columns: 1fr; }
+        .detail-cell { border-right: none !important; }
+        .detail-cell:nth-last-child(-n+2) { border-bottom: 1px solid var(--saqa-border); }
+        .detail-cell:last-child { border-bottom: none; }
+        .header { grid-template-columns: auto 1fr; }
+        .header-badge { display: none; }
+        .footer { flex-direction: column; align-items: flex-start; }
+        .footer-right { align-items: flex-start; }
+        .lookup-row { flex-direction: column; }
+        .lookup-btn { width: 100%; justify-content: center; }
       }
     </style>
   </head>
   <body>
+
     <!-- Government banner -->
     <div class="gov-banner">
       <span>
-        <span class="gov-flag" aria-hidden="true">
-         <img src="/images/south-africa-flag-icon.webp" width="24" height="auto">
-        </span>
+        <img src="/images/south-africa-flag-icon.webp" width="22" height="auto" style="border-radius:2px;" alt="SA Flag">
         Republic of South Africa — Official Government Portal
       </span>
       <span>NQF Act 67 of 2008</span>
     </div>
 
     <div class="card">
+
       <!-- Header -->
       <div class="header">
         <div class="header-accent"></div>
         <div>
           <div class="header-body">
             <div class="header-logo-row">
-              <img src="/uploads/2022/12/saqa-logo-color.png" style="width: 60px;height: auto;" alt="">
+              <img src="/uploads/2022/12/saqa-logo-color.png" style="width:60px;height:auto;" alt="SAQA Logo">
               <div class="header-title-block">
                 <h1>South African Qualifications Authority</h1>
                 <p>VeriSearch — Learner Achievement Verification System</p>
@@ -566,27 +481,46 @@
             </div>
           </div>
           <div class="header-subbar">
-            <span
-              ><span class="subbar-dot"></span> National Qualifications
-              Framework (NQF)</span
-            >
-            <span
-              ><span class="subbar-dot"></span> National Learners' Records
-              Database (NLRD)</span
-            >
-            <span
-              ><span class="subbar-dot"></span> Secured & Authenticated</span
-            >
+            <span><span class="subbar-dot"></span> National Qualifications Framework (NQF)</span>
+            <span><span class="subbar-dot"></span> National Learners' Records Database (NLRD)</span>
+            <span><span class="subbar-dot"></span> Secured &amp; Authenticated</span>
           </div>
         </div>
         <div class="header-badge">
           <div class="nlrd-label">Database</div>
-          <div class="nlrd-title">National<br />Learners'<br />Records</div>
+          <div class="nlrd-title">National<br>Learners'<br>Records</div>
         </div>
       </div>
 
       <!-- Content -->
       <div class="content">
+
+        <!-- ── MANUAL LOOKUP FIELD ── -->
+        <div class="lookup-box">
+          <div class="lookup-box-title">Certificate Code Lookup</div>
+          <p>Enter the certificate reference code below to verify a learner's record against the NLRD. You may also scan the QR code on the certificate to auto-populate this field.</p>
+          <div class="lookup-row">
+            <input
+              type="text"
+              id="manualCode"
+              class="lookup-input"
+              placeholder="e.g. HW982PA04450"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="lookup-btn" onclick="runLookup()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Verify Record
+            </button>
+          </div>
+          <div class="lookup-hint">
+            <span class="lookup-hint-icon">ℹ</span>
+            The certificate code is printed on the certificate, typically below the QR code or next to the certificate number. Codes are case-sensitive.
+          </div>
+        </div>
+
         <div id="result"></div>
       </div>
 
@@ -594,11 +528,8 @@
       <div class="footer">
         <div class="footer-left">
           <strong>South African Qualifications Authority (SAQA)</strong>
-          <p>
-            Lourie Place, 189 Lunnon Road, Hillcrest Office Park, Pretoria
-            0083<br />
-            © 2026 SAQA. All rights reserved. | NQF Act 67 of 2008
-          </p>
+          <p>Lourie Place, 189 Lunnon Road, Hillcrest Office Park, Pretoria 0083<br>
+          © 2026 SAQA. All rights reserved. | NQF Act 67 of 2008</p>
         </div>
         <div class="footer-right">
           <a href="#">verifications@saqa-rsa.online</a>
@@ -609,9 +540,6 @@
     </div>
 
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get("code");
-
       const certificates = {
         "HW982PA04450": {
           name: "TATENDA BIANCA MLILO",
@@ -623,182 +551,186 @@
           certNumber: "24/523614",
           dateIssued: "2024-02-08",
           status: "FOUND",
-          certificateCode: "HW982PA04450",
           authority: "SAQA VeriSearch Service",
           institution: "Intokozo Home Based Care Academy",
           province: "Johannesburg",
           country: "South Africa",
         },
-       
       };
 
       const resultDiv = document.getElementById("result");
 
-      // Loading state
-      resultDiv.innerHTML = `
-        <div class="status-box status-loading">
-            <div class="loader-wrap" style="flex:1">
-                <div class="loader"></div>
-                <p style="font-size:13.5px;color:#666;">Querying the National Learners' Records Database (NLRD)…</p>
-            </div>
-        </div>
-    `;
-
       function formatDate(d) {
         const parts = d.split("-");
-        const months = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ];
+        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         return `${parseInt(parts[2])} ${months[parseInt(parts[1]) - 1]} ${parts[0]}`;
       }
 
-      setTimeout(() => {
-        if (!code) {
+      function showLoading() {
+        resultDiv.innerHTML = `
+          <div class="status-box status-loading">
+            <div class="loader-wrap" style="flex:1">
+              <div class="loader"></div>
+              <p style="font-size:13.5px;color:#666;">Querying the National Learners' Records Database (NLRD)&hellip;</p>
+            </div>
+          </div>`;
+      }
+
+      function showResult(code) {
+        const trimmed = (code || "").trim();
+
+        if (!trimmed) {
           resultDiv.innerHTML = `
-                <div class="status-box status-invalid animate-in">
-                    <div class="status-icon">⚠️</div>
-                    <div class="status-body">
-                        <h2>No Verification Code Supplied</h2>
-                        <p>A valid certificate code must be provided via QR code scan or URL parameter. Please verify that the code has been included in the request.</p>
-                    </div>
-                </div>
-            `;
-        } else if (certificates[code]) {
-          const c = certificates[code];
+            <div class="status-box status-invalid animate-in">
+              <div class="status-icon">⚠️</div>
+              <div class="status-body">
+                <h2>No Verification Code Supplied</h2>
+                <p>Please enter a valid certificate code in the field above, or scan the QR code printed on the certificate.</p>
+              </div>
+            </div>`;
+          return;
+        }
+
+        const c = certificates[trimmed];
+
+        if (c) {
           const now = new Date();
-          const verDate = now.toLocaleDateString("en-ZA", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          });
-          const verTime = now.toLocaleTimeString("en-ZA", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          });
+          const verDate = now.toLocaleDateString("en-ZA", { day: "numeric", month: "long", year: "numeric" });
+          const verTime = now.toLocaleTimeString("en-ZA", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
 
           resultDiv.innerHTML = `
-                <!-- Status -->
-                <div class="status-box status-valid animate-in">
-                    <div class="status-icon">✅</div>
-                    <div class="status-body">
-                        <h2>Record Found on the NLRD</h2>
-                        <p>The learner achievement referenced below has been located on SAQA's National Learners' Records Database and is confirmed as authentic.</p>
-                        <span class="status-ref">NLRD STATUS: ${c.status}</span>
-                    </div>
-                </div>
+            <div class="status-box status-valid animate-in">
+              <div class="status-icon">✅</div>
+              <div class="status-body">
+                <h2>Record Found on the NLRD</h2>
+                <p>The learner achievement referenced below has been located on SAQA's National Learners' Records Database and is confirmed as authentic.</p>
+                <span class="status-ref">NLRD STATUS: ${c.status}</span>
+              </div>
+            </div>
 
-                <!-- Learner Details -->
-                <div class="animate-in-delay">
-                    <div class="section-label">Learner Information</div>
-                    <div class="details-panel" style="margin-bottom:24px">
-                        <div class="details-header">
-                            Verified Learner Record
-                            <span class="details-header-badge">AUTHENTICATED</span>
-                        </div>
-                        <div class="details-grid">
-                            <div class="detail-cell">
-                                <div class="detail-key">Learner Full Name</div>
-                                <div class="detail-val highlight">${c.name}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Identity / Student Number</div>
-                                <div class="detail-val mono">${c.idNumber}</div>
-                            </div>
-                            <div class="detail-cell full-width" style="border-bottom:1px solid var(--saqa-border)">
-                                <div class="detail-key">Qualification Title</div>
-                                <div class="detail-val highlight">${c.qualification}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Qualification / Programme Code</div>
-                                <div class="detail-val mono">${c.qualCode}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">NQF Level</div>
-                                <div class="detail-val">
-                                    <span class="nqf-badge">NQF Level <strong>${c.nqfLevel}</strong></span>
-                                </div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Certificate Reference Number</div>
-                                <div class="detail-val mono">${c.certNumber}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Certificate Code</div>
-                                <div class="detail-val mono">${code}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Date Awarded</div>
-                                <div class="detail-val">${formatDate(c.dateIssued)}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Awarding Institution</div>
-                                <div class="detail-val">${c.institution}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Verified By</div>
-                                <div class="detail-val">${c.authority}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">Province / Region</div>
-                                <div class="detail-val">${c.province}, ${c.country}</div>
-                            </div>
-                            <div class="detail-cell">
-                                <div class="detail-key">NLRD Record Status</div>
-                                <div class="detail-val" style="color:var(--saqa-green);font-weight:600;">${c.status} ✓</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="animate-in-delay">
+              <div class="section-label">Learner Information</div>
+              <div class="details-panel" style="margin-bottom:24px">
+                <div class="details-header">
+                  Verified Learner Record
+                  <span class="details-header-badge">AUTHENTICATED</span>
                 </div>
+                <div class="details-grid">
+                  <div class="detail-cell">
+                    <div class="detail-key">Learner Full Name</div>
+                    <div class="detail-val highlight">${c.name}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Identity / Student Number</div>
+                    <div class="detail-val mono">${c.idNumber}</div>
+                  </div>
+                  <div class="detail-cell full-width" style="border-bottom:1px solid var(--saqa-border)">
+                    <div class="detail-key">Qualification Title</div>
+                    <div class="detail-val highlight">${c.qualification}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Qualification / Programme Code</div>
+                    <div class="detail-val mono">${c.qualCode}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">NQF Level</div>
+                    <div class="detail-val">
+                      <span class="nqf-badge">NQF Level <strong>${c.nqfLevel}</strong></span>
+                    </div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Certificate Reference Number</div>
+                    <div class="detail-val mono">${c.certNumber}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Certificate Code</div>
+                    <div class="detail-val mono">${trimmed}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Date Awarded</div>
+                    <div class="detail-val">${formatDate(c.dateIssued)}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Awarding Institution</div>
+                    <div class="detail-val">${c.institution}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Verified By</div>
+                    <div class="detail-val">${c.authority}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">Province / Region</div>
+                    <div class="detail-val">${c.province}, ${c.country}</div>
+                  </div>
+                  <div class="detail-cell">
+                    <div class="detail-key">NLRD Record Status</div>
+                    <div class="detail-val" style="color:var(--saqa-green);font-weight:600;">${c.status} ✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                <!-- Authenticated Stamp -->
-                <div class="animate-in-delay2">
-                    <div class="section-label">Verification Confirmation</div>
-                    <div class="found-stamp">
-                        <div class="stamp-icon"></div>
-                        <div class="stamp-body">
-                            <strong>SAQA NLRD — Record Verified &amp; Authenticated</strong>
-                            <p>This learner's achievement has been verified against the National Learners' Records Database (NLRD) and is confirmed as a legitimate qualification recorded on the National Qualifications Framework (NQF).</p>
-                            <div class="ts">Verification Date: ${verDate} &nbsp;|&nbsp; Time: ${verTime} &nbsp;|&nbsp; Reference: NLRD-VER-${Date.now()}</div>
-                        </div>
-                    </div>
+            <div class="animate-in-delay2">
+              <div class="section-label">Verification Confirmation</div>
+              <div class="found-stamp">
+                <div class="stamp-icon"></div>
+                <div class="stamp-body">
+                  <strong>SAQA NLRD — Record Verified &amp; Authenticated</strong>
+                  <p>This learner's achievement has been verified against the National Learners' Records Database (NLRD) and is confirmed as a legitimate qualification recorded on the National Qualifications Framework (NQF).</p>
+                  <div class="ts">Verification Date: ${verDate} &nbsp;|&nbsp; Time: ${verTime} &nbsp;|&nbsp; Reference: NLRD-VER-${Date.now()}</div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Disclaimer -->
-                <div class="animate-in-delay3">
-                    <div class="disclaimer">
-                        <strong>Important Notice:</strong> This verification result reflects information recorded on SAQA's National Learners' Records Database at the time of query. SAQA's response is limited to qualifications registered on the NQF. Short courses, professional designations and foreign qualifications are not included in this service. For enquiries, contact <strong>verifications@saqa-rsa.online</strong>.
-                    </div>
-                </div>
-            `;
+            <div class="animate-in-delay3">
+              <div class="disclaimer">
+                <strong>Important Notice:</strong> This verification result reflects information recorded on SAQA's National Learners' Records Database at the time of query. SAQA's response is limited to qualifications registered on the NQF. Short courses, professional designations and foreign qualifications are not included in this service. For enquiries, contact <strong>verifications@saqa-rsa.online</strong>.
+              </div>
+            </div>`;
         } else {
           resultDiv.innerHTML = `
-                <div class="status-box status-invalid animate-in">
-                    <div class="status-icon">❌</div>
-                    <div class="status-body">
-                        <h2>Record Not Found on the NLRD</h2>
-                        <p>Certificate code <strong>${code}</strong> was not located on SAQA's National Learners' Records Database. SAQA's result for this query is: <strong>NOT FOUND</strong>.</p>
-                        <p style="margin-top:10px;">This may indicate that the qualification has not been registered on the NQF, the certificate was not issued by an accredited institution, or the certificate code is incorrect. Please contact the awarding institution to confirm the validity of the certificate.</p>
-                        <span class="status-ref">NLRD STATUS: NOT FOUND</span>
-                    </div>
-                </div>
-                <div class="disclaimer" style="margin-top:0">
-                    For further assistance contact <strong>verifications@saqa-rsa.online</strong> or visit <strong>www.saqa-rsa.online</strong>.
-                </div>
-            `;
+            <div class="status-box status-invalid animate-in">
+              <div class="status-icon">❌</div>
+              <div class="status-body">
+                <h2>Record Not Found on the NLRD</h2>
+                <p>Certificate code <strong>${trimmed}</strong> was not located on SAQA's National Learners' Records Database. SAQA's result for this query is: <strong>NOT FOUND</strong>.</p>
+                <p style="margin-top:10px;">This may indicate the qualification is not registered on the NQF, the certificate was not issued by an accredited institution, or the code is incorrect. Please check the code and try again, or contact the awarding institution.</p>
+                <span class="status-ref">NLRD STATUS: NOT FOUND</span>
+              </div>
+            </div>
+            <div class="disclaimer" style="margin-top:0">
+              For further assistance contact <strong>verifications@saqa-rsa.online</strong> or visit <strong>www.saqa-rsa.online</strong>.
+            </div>`;
         }
-      }, 1800);
+
+        // Smooth scroll to results
+        setTimeout(() => resultDiv.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+      }
+
+      function runLookup() {
+        const input = document.getElementById("manualCode");
+        const code = input.value;
+        if (!code.trim()) {
+          showResult("");
+          return;
+        }
+        showLoading();
+        setTimeout(() => showResult(code), 1200);
+      }
+
+      // Enter key support
+      document.getElementById("manualCode").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") runLookup();
+      });
+
+      // Auto-run on QR code scan (code in URL)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCode = urlParams.get("code");
+      if (urlCode) {
+        document.getElementById("manualCode").value = urlCode;
+        showLoading();
+        setTimeout(() => showResult(urlCode), 1800);
+      }
     </script>
   </body>
 </html>
