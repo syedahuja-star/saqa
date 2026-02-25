@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAQA-RSA Certificate QR Codes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f5f5f5;
+        padding: 20px;
+      }
+      h1 {
+        color: #003366;
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+      }
+      #qrcodes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .qr-wrapper {
+        background: white;
+        border: 2px solid #003366;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        width: 250px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .qr-wrapper .cert-code {
+        font-weight: bold;
+        font-size: 16px;
+        color: #003366;
+        margin-bottom: 5px;
+      }
+      .qr-wrapper .cert-name {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.4;
+      }
+      .qr-wrapper img {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px;
+        background: white;
+      }
+      .download-btn {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 8px 16px;
+        background: #003366;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 13px;
+        transition: background 0.3s;
+      }
+      .download-btn:hover {
+        background: #004d99;
+      }
+      .info-box {
+        background: white;
+        border: 2px solid #003366;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 600px;
+        text-align: left;
+      }
+      .info-box h3 {
+        color: #003366;
+        margin-top: 0;
+      }
+      .info-box ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+      .download-all-btn {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 12px 24px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .download-all-btn:hover {
+        background: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎓 SAQA-RSA Certificate QR Codes</h1>
+    <p class="subtitle">INTOKOZO HOME BASED CARE ACADEMY - Certificate Verification QR Codes</p>
+
+    <div class="info-box">
+      <h3>📋 Certificate Codes Generated:</h3>
+      <ul id="cert-list"></ul>
+      <p style="margin-top: 15px; color: #666; font-size: 13px;">
+        <strong>Verification URL:</strong> https://saqa-rsa.online/verification-services/verify?code=CERTIFICATE_CODE
+      </p>
+    </div>
+
+    <button class="download-all-btn" onclick="downloadAllQRCodes()">📥 Download All QR Codes</button>
+
+    <div id="qrcodes"></div>
+
+    <script>
+      
+      const certificates = [
+        {
+          code: 'HW982PA04450',
+          name: 'TATENDA BIANCA MLILO',
+          qualification: 'Caregiver'
+        },
+        /*
+        {
+          code: 'NOSC/08/CCWRS',
+          name: 'VENEKA BANGA',
+          qualification: 'Woundcare in Remote Settings'
+        },
+        {
+          code: 'NOSC/08/CCLWHC',
+          name: 'VENEKA BANGA',
+          qualification: 'Lifestyle & Wellness Healthcare Coach'
+        },
+        {
+          code: 'NOSC/08/CCCLP',
+          name: 'VENEKA BANGA',
+          qualification: 'Clinical Leadership & Professionalism'
+        }*/
+      ];
+
+     
+      const qrDataUrls = [];
+
+      $(document).ready(function () {
+        const qrContainer = document.getElementById("qrcodes");
+        const certList = document.getElementById("cert-list");
+
+        certificates.forEach((cert) => {
+          const codeText = cert.code;
+
+          // Add to certificate list
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `<strong>${codeText}</strong> - ${cert.name} (${cert.qualification})`;
+          certList.appendChild(listItem);
+
+          // Define the URL for the QR code
+          const qrURL = `https://saqa-rsa.online/verification-services/verify?code=${codeText}`;
+
+          const qr = qrcode(0, "M"); // Version auto, Medium error correction
+          qr.addData(qrURL);
+          qr.make();
+
+          const qrWrapper = document.createElement("div");
+          qrWrapper.className = "qr-wrapper";
+
+          // Certificate code
+          const codeLabel = document.createElement("p");
+          codeLabel.className = "cert-code";
+          codeLabel.textContent = codeText;
+          qrWrapper.appendChild(codeLabel);
+
+          // Certificate details
+          const nameLabel = document.createElement("p");
+          nameLabel.className = "cert-name";
+          nameLabel.textContent = `${cert.name}\n${cert.qualification}`;
+          qrWrapper.appendChild(nameLabel);
+
+          // Insert the generated QR code image
+          const imgHtml = qr.createImgTag(5); // Size 5 for better quality
+          qrWrapper.insertAdjacentHTML("beforeend", imgHtml);
+
+          // Get the image element
+          const img = qrWrapper.querySelector("img");
+          if (img) {
+            // Store data URL for batch download
+            qrDataUrls.push({
+              dataUrl: img.src,
+              filename: `${codeText.replace(/\//g, '-')}.png`
+            });
+
+            // Create download link
+            const dl = document.createElement("a");
+            dl.href = img.src;
+            dl.download = `SAQA-RSA_${codeText.replace(/\//g, '-')}.png`;
+            dl.className = "download-btn";
+            dl.textContent = "📥 Download";
+            qrWrapper.appendChild(dl);
+          }
+
+          qrContainer.appendChild(qrWrapper);
+        });
+      });
+
+      // Function to download all QR codes
+      function downloadAllQRCodes() {
+        qrDataUrls.forEach((qr, index) => {
+          setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = qr.dataUrl;
+            link.download = `SAQA-RSA_${qr.filename}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }, index * 200); // Delay to prevent browser blocking multiple downloads
+        });
+      }
+    </script>
+  </body>
+</html>

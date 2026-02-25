@@ -1,657 +1,837 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificate Verification | College Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --navy: #0a1628;
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-pale: #fdf6e3;
-      --emerald: #1a6b4a;
-      --emerald-light: #22c55e;
-      --cream: #fafaf7;
-      --steel: #334155;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --verified-bg: #f0fdf4;
-      --verified-border: #bbf7d0;
-      --invalid-bg: #fef2f2;
-      --invalid-border: #fecaca;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAQA VeriSearch – Learner Achievement Verification</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --saqa-green: #006633;
+        --saqa-green-light: #008040;
+        --saqa-gold: #c8922a;
+        --saqa-gold-light: #e5a93a;
+        --saqa-navy: #1a2b4a;
+        --saqa-gray: #f4f5f2;
+        --saqa-border: #d8ddd4;
+        --saqa-text: #1c2217;
+        --saqa-muted: #5a6355;
+        --verified-green: #006633;
+        --invalid-red: #8b1a1a;
+      }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--navy);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow-x: hidden;
-    }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background-color: #eeeee9;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(0, 102, 51, 0.04) 40px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 39px,
+            rgba(0, 102, 51, 0.04) 40px
+          );
+        min-height: 100vh;
+        color: var(--saqa-text);
+        padding: 30px 16px;
+      }
 
-    /* Subtle geometric background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 90%, rgba(26,107,74,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
+      /* ── TOP GOVERNMENT BANNER ── */
+      .gov-banner {
+        max-width: 900px;
+        margin: 0 auto 0px;
+        background: var(--saqa-navy);
+        color: #c8d4e8;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        padding: 7px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px 4px 0 0;
+      }
+      .gov-banner span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .gov-flag {
+        display: inline-flex;
+        width: 22px;
+        height: 14px;
+        border-radius: 2px;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .gov-flag svg {
+        width: 100%;
+        height: 100%;
+      }
 
-    /* Top header bar */
-    .header-bar {
-      width: 100%;
-      background: linear-gradient(135deg, #0a1628 0%, #0f2040 100%);
-      border-bottom: 2px solid var(--gold);
-      padding: 0;
-      position: relative;
-      z-index: 10;
-    }
+      /* ── MAIN CARD ── */
+      .card {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #fff;
+        border: 1px solid var(--saqa-border);
+        border-top: none;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 6px 6px;
+        overflow: hidden;
+      }
 
-    .header-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 18px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+      /* ── HEADER ── */
+      .header {
+        background: var(--saqa-green);
+        padding: 0;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: stretch;
+      }
+      .header-accent {
+        width: 8px;
+        background: linear-gradient(180deg, var(--saqa-gold) 0%, #9b6b18 100%);
+      }
+      .header-body {
+        padding: 24px 28px 22px;
+      }
+      .header-logo-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px;
+      }
+      .saqa-emblem {
+        width: 52px;
+        height: 52px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Crimson Text", serif;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--saqa-green);
+        letter-spacing: -0.5px;
+        border: 2px solid var(--saqa-gold);
+        flex-shrink: 0;
+      }
+      .header-title-block h1 {
+        font-family: "Crimson Text", serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.2;
+      }
+      .header-title-block p {
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.75);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+      .header-badge {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .header-badge .nlrd-label {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .header-badge .nlrd-title {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--saqa-gold-light);
+        text-align: center;
+        line-height: 1.3;
+      }
+      .header-subbar {
+        background: rgba(0, 0, 0, 0.18);
+        padding: 8px 28px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .header-subbar span {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .subbar-dot {
+        width: 5px;
+        height: 5px;
+        background: var(--saqa-gold);
+        border-radius: 50%;
+      }
 
-    .college-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+      /* ── CONTENT ── */
+      .content {
+        padding: 32px 36px;
+      }
 
-    .logo-seal {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(201,168,76,0.25);
-    }
+      /* ── STATUS BOX ── */
+      .status-box {
+        border-radius: 4px;
+        padding: 22px 28px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        border-left: 5px solid transparent;
+      }
+      .status-valid {
+        background: #f0f7f3;
+        border-color: var(--saqa-green);
+      }
+      .status-invalid {
+        background: #fbf0f0;
+        border-color: var(--invalid-red);
+      }
+      .status-loading {
+        background: #f5f5ee;
+        border-color: #999;
+      }
+      .status-icon {
+        font-size: 32px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .status-body h2 {
+        font-family: "Crimson Text", serif;
+        font-size: 21px;
+        font-weight: 600;
+        color: var(--saqa-green);
+        margin-bottom: 5px;
+      }
+      .status-invalid .status-body h2 {
+        color: var(--invalid-red);
+      }
+      .status-loading .status-body h2 {
+        color: var(--saqa-navy);
+      }
+      .status-body p {
+        font-size: 13.5px;
+        color: var(--saqa-muted);
+        line-height: 1.55;
+      }
+      .status-ref {
+        margin-top: 10px;
+        display: inline-block;
+        background: var(--saqa-green);
+        color: #fff;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        padding: 4px 12px;
+        border-radius: 2px;
+        font-weight: 500;
+      }
+      .status-invalid .status-ref {
+        background: var(--invalid-red);
+      }
 
-    .college-name {
-      display: flex;
-      flex-direction: column;
-    }
+      /* ── SECTION LABEL ── */
+      .section-label {
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--saqa-gold);
+        font-weight: 600;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--saqa-border);
+      }
 
-    .college-name strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      color: #fff;
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-    }
+      /* ── DETAILS PANEL ── */
+      .details-panel {
+        background: var(--saqa-gray);
+        border: 1px solid var(--saqa-border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      .details-header {
+        background: var(--saqa-navy);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 12px 20px;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .details-header-badge {
+        background: var(--saqa-gold);
+        color: #fff;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        letter-spacing: 0.05em;
+      }
 
-    .college-name span {
-      font-size: 11px;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-top: 2px;
-    }
+      .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .detail-cell {
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--saqa-border);
+        border-right: 1px solid var(--saqa-border);
+      }
+      .detail-cell:nth-child(even) {
+        border-right: none;
+      }
+      .detail-cell:nth-last-child(-n + 2) {
+        border-bottom: none;
+      }
+      .detail-cell.full-width {
+        grid-column: 1 / -1;
+        border-right: none;
+      }
+      .detail-key {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--saqa-muted);
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      .detail-val {
+        font-size: 14px;
+        color: var(--saqa-text);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .detail-val.highlight {
+        color: var(--saqa-green);
+        font-family: "Crimson Text", serif;
+        font-size: 17px;
+      }
+      .detail-val.mono {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        color: var(--saqa-navy);
+        background: rgba(0, 0, 0, 0.04);
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        letter-spacing: 0.03em;
+      }
+      .nqf-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--saqa-navy);
+        color: #fff;
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 3px;
+      }
+      .nqf-badge strong {
+        color: var(--saqa-gold-light);
+      }
 
-    .header-right {
-      text-align: right;
-    }
+      /* ── FOUND STAMP ── */
+      .found-stamp {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #f0f7f3;
+        border: 1px solid rgba(0, 102, 51, 0.2);
+        border-radius: 4px;
+        padding: 18px 24px;
+        margin-bottom: 24px;
+      }
+      .stamp-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid var(--saqa-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .stamp-icon::after {
+        content: "✓";
+        font-size: 26px;
+        color: var(--saqa-green);
+        font-weight: bold;
+      }
+      .stamp-body strong {
+        display: block;
+        font-family: "Crimson Text", serif;
+        font-size: 18px;
+        color: var(--saqa-green);
+        margin-bottom: 3px;
+      }
+      .stamp-body p {
+        font-size: 12.5px;
+        color: var(--saqa-muted);
+        line-height: 1.5;
+      }
+      .stamp-body .ts {
+        font-size: 11px;
+        color: var(--saqa-muted);
+        margin-top: 6px;
+        opacity: 0.8;
+      }
 
-    .header-right .portal-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--gold-light);
-    }
+      /* ── DISCLAIMER ── */
+      .disclaimer {
+        background: #fffdf5;
+        border: 1px solid rgba(200, 146, 42, 0.3);
+        border-left: 4px solid var(--saqa-gold);
+        padding: 14px 18px;
+        border-radius: 0 4px 4px 0;
+        font-size: 12px;
+        color: var(--saqa-muted);
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .disclaimer strong {
+        color: var(--saqa-navy);
+      }
 
-    .header-right .portal-name {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      margin-top: 2px;
-    }
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--saqa-navy);
+        padding: 18px 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .footer-left p {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.7;
+      }
+      .footer-left strong {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 12px;
+      }
+      .footer-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 4px;
+      }
+      .footer-right a {
+        font-size: 11px;
+        color: var(--saqa-gold-light);
+        text-decoration: none;
+      }
+      .footer-right a:hover {
+        text-decoration: underline;
+      }
 
-    /* Main card */
-    .main-wrapper {
-      max-width: 860px;
-      width: 100%;
-      padding: 40px 20px 60px;
-      position: relative;
-      z-index: 1;
-    }
+      /* ── LOADER ── */
+      .loader-wrap {
+        text-align: center;
+        padding: 20px 0;
+      }
+      .loader {
+        width: 36px;
+        height: 36px;
+        border: 3px solid #ddd;
+        border-top-color: var(--saqa-green);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 16px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-    /* Live timestamp banner */
-    .live-banner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 8px;
-      padding: 10px 20px;
-      margin-bottom: 28px;
-      animation: fadeSlideDown 0.6s ease both;
-    }
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-in {
+        animation: fadeUp 0.5s ease both;
+      }
+      .animate-in-delay {
+        animation: fadeUp 0.5s ease 0.15s both;
+      }
+      .animate-in-delay2 {
+        animation: fadeUp 0.5s ease 0.3s both;
+      }
+      .animate-in-delay3 {
+        animation: fadeUp 0.5s ease 0.45s both;
+      }
 
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--emerald-light);
-      animation: pulse-dot 1.8s infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
-    }
-
-    .live-banner span {
-      font-size: 12.5px;
-      color: var(--gold-light);
-      letter-spacing: 0.04em;
-    }
-
-    .live-banner #live-time {
-      font-weight: 600;
-      color: #fff;
-    }
-
-    /* Verification status */
-    .status-card {
-      background: var(--verified-bg);
-      border: 1.5px solid var(--verified-border);
-      border-radius: 14px;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 32px;
-      animation: fadeSlideDown 0.6s ease 0.1s both;
-    }
-
-    .status-card.invalid {
-      background: var(--invalid-bg);
-      border-color: var(--invalid-border);
-    }
-
-    .status-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--emerald-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .status-icon.invalid {
-      background: #ef4444;
-    }
-
-    .status-text strong {
-      display: block;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--emerald);
-    }
-
-    .status-text span {
-      font-size: 13px;
-      color: #166534;
-      margin-top: 2px;
-      display: block;
-    }
-
-    /* Main certificate card */
-    .cert-card {
-      background: var(--cream);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow:
-        0 4px 6px rgba(0,0,0,0.05),
-        0 20px 60px rgba(0,0,0,0.3),
-        0 0 0 1px rgba(201,168,76,0.2);
-      animation: fadeSlideUp 0.7s ease 0.2s both;
-    }
-
-    /* Gold accent top stripe */
-    .cert-card-top {
-      height: 6px;
-      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 40%, var(--gold-light) 60%, var(--gold) 100%);
-    }
-
-    .cert-card-body {
-      padding: 40px 44px;
-    }
-
-    /* Section: Candidate */
-    .section-title {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .candidate-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 24px;
-    }
-
-    /* Info grid */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 36px;
-      margin-bottom: 32px;
-    }
-
-    .info-item {}
-
-    .info-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    .info-value {
-      font-size: 15px;
-      color: var(--steel);
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    .info-value.highlight {
-      color: var(--navy);
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    /* NQF badge */
-    .nqf-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--navy);
-      color: var(--gold-light);
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .nqf-badge .nqf-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--gold);
-    }
-
-    /* Validity pill */
-    .validity-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--verified-bg);
-      border: 1px solid var(--verified-border);
-      border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 13px;
-      color: var(--emerald);
-      font-weight: 500;
-    }
-
-    .validity-pill::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--emerald-light);
-      display: inline-block;
-    }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 28px 0;
-    }
-
-    /* Seal section */
-    .seal-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .seal-block {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .official-seal {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3060 100%);
-      border: 3px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      box-shadow: 0 0 0 4px rgba(201,168,76,0.15), 0 4px 16px rgba(0,0,0,0.15);
-      flex-shrink: 0;
-    }
-
-    .official-seal .seal-emoji {
-      font-size: 28px;
-      line-height: 1;
-    }
-
-    .seal-text strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      color: var(--navy);
-      line-height: 1.3;
-    }
-
-    .seal-text span {
-      font-size: 11.5px;
-      color: var(--muted);
-      display: block;
-      margin-top: 2px;
-    }
-
-    /* Ref / QR section */
-    .ref-block {
-      text-align: right;
-    }
-
-    .ref-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .ref-value {
-      font-size: 13px;
-      color: var(--steel);
-      font-family: 'Courier New', monospace;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      margin-top: 3px;
-    }
-
-    /* Footer disclaimer */
-    .cert-footer {
-      background: #f1f5f9;
-      border-top: 1px solid var(--border);
-      padding: 18px 44px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .cert-footer span {
-      font-size: 11.5px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .cert-footer .lock-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-
-    /* Bottom notice */
-    .bottom-notice {
-      text-align: center;
-      margin-top: 28px;
-      animation: fadeSlideUp 0.7s ease 0.35s both;
-    }
-
-    .bottom-notice p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.6;
-    }
-
-    .bottom-notice a {
-      color: var(--gold-light);
-      text-decoration: none;
-    }
-
-    /* Animations */
-    @keyframes fadeSlideDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .header-inner { padding: 14px 20px; }
-      .cert-card-body { padding: 28px 24px; }
-      .cert-footer { padding: 16px 24px; }
-      .info-grid { grid-template-columns: 1fr; gap: 20px; }
-      .candidate-name { font-size: 26px; }
-      .seal-row { flex-direction: column; align-items: flex-start; }
-      .ref-block { text-align: left; }
-      .header-right { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <div class="header-bar">
-    <div class="header-inner">
-      <div class="college-logo">
-        <div class="logo-seal">🏛️</div>
-        <div class="college-name">
-          <strong>Your College Name</strong>
-          <span>Republic of South Africa</span>
-        </div>
-      </div>
-      <div class="header-right">
-        <div class="portal-label">Official Portal</div>
-        <div class="portal-name">Certificate Verification System</div>
-      </div>
+      @media (max-width: 640px) {
+        .content {
+          padding: 22px 18px;
+        }
+        .details-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-cell {
+          border-right: none !important;
+        }
+        .detail-cell:nth-last-child(-n + 2) {
+          border-bottom: 1px solid var(--saqa-border);
+        }
+        .detail-cell:last-child {
+          border-bottom: none;
+        }
+        .header {
+          grid-template-columns: auto 1fr;
+        }
+        .header-badge {
+          display: none;
+        }
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .footer-right {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Government banner -->
+    <div class="gov-banner">
+      <span>
+        <span class="gov-flag" aria-hidden="true">
+          <svg viewBox="0 0 22 14" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="14" fill="#007A4D" />
+            <polygon points="0,0 11,7 0,14" fill="#000" />
+            <polygon
+              points="0,0 11,7 0,14"
+              fill="#FFB612"
+              transform="scale(0.85) translate(0,1.05)"
+            />
+            <polygon
+              points="0,0 11,7 0,14"
+              fill="#007A4D"
+              transform="scale(0.6) translate(0,2.9)"
+            />
+            <rect y="0" width="22" height="4.5" fill="#002395" opacity="0.9" />
+            <rect
+              y="9.5"
+              width="22"
+              height="4.5"
+              fill="#E03C31"
+              opacity="0.9"
+            />
+            <rect y="4.5" width="22" height="5" fill="#fff" />
+            <polygon points="0,0 6.5,7 0,14 12,9 12,5" fill="#000" />
+            <polygon
+              points="0,0 6.5,7 0,14 12,9 12,5"
+              fill="#FFB612"
+              transform="scale(0.78) translate(0,1.54)"
+            />
+            <polygon
+              points="0,0 6.5,7 0,14 12,9 12,5"
+              fill="#007A4D"
+              transform="scale(0.55) translate(0,3.18)"
+            />
+          </svg>
+        </span>
+        Republic of South Africa — Official Government Portal
+      </span>
+      <span>NQF Act 67 of 2008</span>
     </div>
-  </div>
 
-  <!-- Main Content -->
-  <div class="main-wrapper">
-
-    <!-- Live timestamp -->
-    <div class="live-banner">
-      <div class="live-dot"></div>
-      <span>Live verification — accessed <span id="live-time"></span></span>
-    </div>
-
-    <!-- Verified status -->
-    <div class="status-card" id="status-card">
-      <div class="status-icon" id="status-icon">✓</div>
-      <div class="status-text">
-        <strong id="status-heading">Certificate Verified Successfully</strong>
-        <span id="status-sub">This certificate is authentic and currently valid in our records.</span>
-      </div>
-    </div>
-
-    <!-- Certificate card -->
-    <div class="cert-card">
-      <div class="cert-card-top"></div>
-
-      <div class="cert-card-body">
-        <div class="section-title">Certificate Holder</div>
-        <div class="candidate-name" id="candidate-name">Thabo Sipho Nkosi</div>
-
-        <div class="info-grid">
-          <div class="info-item">
-            <div class="info-label">Qualification Awarded</div>
-            <div class="info-value highlight" id="qualification">National Certificate: Business Administration</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">Field of Study</div>
-            <div class="info-value" id="field">Business, Commerce &amp; Management Studies</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">NQF Level Recognised</div>
-            <div style="margin-top: 4px;">
-              <div class="nqf-badge">
-                NQF Level <span class="nqf-num" id="nqf-level">5</span>
+    <div class="card">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-accent"></div>
+        <div>
+          <div class="header-body">
+            <div class="header-logo-row">
+              <div class="saqa-emblem">SAQA</div>
+              <div class="header-title-block">
+                <h1>South African Qualifications Authority</h1>
+                <p>VeriSearch — Learner Achievement Verification System</p>
               </div>
             </div>
           </div>
-          <div class="info-item">
-            <div class="info-label">Issuing Institution</div>
-            <div class="info-value" id="institution">Your College Name</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">Date of Award</div>
-            <div class="info-value" id="date-awarded">15 November 2023</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">Validity Status</div>
-            <div style="margin-top: 4px;">
-              <span class="validity-pill" id="validity-pill">Valid &amp; Current</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">Student ID / Reference</div>
-            <div class="info-value" id="student-id">STU-2021-00847</div>
-          </div>
-          <div class="info-item">
-            <div class="info-label">SAQA Certification ID</div>
-            <div class="info-value" id="saqa-id">SAQA-78321-2023</div>
+          <div class="header-subbar">
+            <span
+              ><span class="subbar-dot"></span> National Qualifications
+              Framework (NQF)</span
+            >
+            <span
+              ><span class="subbar-dot"></span> National Learners' Records
+              Database (NLRD)</span
+            >
+            <span
+              ><span class="subbar-dot"></span> Secured & Authenticated</span
+            >
           </div>
         </div>
-
-        <div class="divider"></div>
-
-        <div class="seal-row">
-          <div class="seal-block">
-            <div class="official-seal">
-              <span class="seal-emoji">🎓</span>
-            </div>
-            <div class="seal-text">
-              <strong>Officially Authenticated</strong>
-              <span>Verified by Your College Name</span>
-              <span>Authorised Certificate Issuing Body</span>
-            </div>
-          </div>
-          <div class="ref-block">
-            <div class="ref-label">Verification Reference</div>
-            <div class="ref-value" id="verify-ref">VRF-20231115-8472A</div>
-            <div style="font-size:11px; color: var(--muted); margin-top: 4px;">Scan timestamp recorded</div>
-          </div>
+        <div class="header-badge">
+          <div class="nlrd-label">Database</div>
+          <div class="nlrd-title">National<br />Learners'<br />Records</div>
         </div>
       </div>
 
-      <div class="cert-footer">
-        <span class="lock-icon">🔒</span>
-        <span>This page is served directly from the official college verification portal. The QR code on this certificate links uniquely to this record. Any discrepancy should be reported to the Registrar's Office immediately.</span>
+      <!-- Content -->
+      <div class="content">
+        <div id="result"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-left">
+          <strong>South African Qualifications Authority (SAQA)</strong>
+          <p>
+            Lourie Place, 189 Lunnon Road, Hillcrest Office Park, Pretoria
+            0083<br />
+            © 2026 SAQA. All rights reserved. | NQF Act 67 of 2008
+          </p>
+        </div>
+        <div class="footer-right">
+          <a href="#">verifications@saqa-rsa.online</a>
+          <a href="#">www.saqa-rsa.online</a>
+          <a href="#">verisearch.saqa-rsa.online</a>
+        </div>
       </div>
     </div>
 
-    <div class="bottom-notice">
-      <p>
-        Certificate records are maintained in accordance with SAQA and DHET requirements. <br/>
-        For queries, contact the Registrar: <a href="mailto:registrar@yourcollege.ac.za">registrar@yourcollege.ac.za</a>
-      </p>
-    </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
 
-  </div>
-
-  <script>
-    // ── Live clock ──────────────────────────────────────────────────
-    function updateClock() {
-      const now = new Date();
-      const opts = {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-        timeZoneName: 'short'
+      const certificates = {
+        "HW982PA04450": {
+          name: "TATENDA BIANCA MLILO",
+          idNumber: "AE036466",
+          qualification: "Certificate in Caregiving",
+          qualCode: "671101",
+          qualDescription: "Care Giver",
+          nqfLevel: "5",
+          certNumber: "24/523614",
+          dateIssued: "2024-02-08",
+          status: "FOUND",
+          certificateCode: "HW982PA04450",
+          authority: "SAQA VeriSearch Service",
+          institution: "Intokozo Home Based Care Academy",
+          province: "Johannesburg",
+          country: "South Africa",
+        },
+       
       };
-      document.getElementById('live-time').textContent = now.toLocaleString('en-ZA', opts);
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
 
-    // ── Load data from URL params (for dynamic QR linking) ──────────
-    // Each QR code links to: verify.html?name=John+Doe&qual=National+Certificate...&nqf=5&date=...
-    const params = new URLSearchParams(window.location.search);
+      const resultDiv = document.getElementById("result");
 
-    function setField(id, paramKey, fallback) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = params.get(paramKey) || fallback;
-    }
+      // Loading state
+      resultDiv.innerHTML = `
+        <div class="status-box status-loading">
+            <div class="loader-wrap" style="flex:1">
+                <div class="loader"></div>
+                <p style="font-size:13.5px;color:#666;">Querying the National Learners' Records Database (NLRD)…</p>
+            </div>
+        </div>
+    `;
 
-    setField('candidate-name',  'name',        'Thabo Sipho Nkosi');
-    setField('qualification',   'qual',        'National Certificate: Business Administration');
-    setField('field',           'field',       'Business, Commerce & Management Studies');
-    setField('nqf-level',       'nqf',         '5');
-    setField('institution',     'institution', 'Your College Name');
-    setField('date-awarded',    'date',        '15 November 2023');
-    setField('student-id',      'sid',         'STU-2021-00847');
-    setField('saqa-id',         'saqa',        'SAQA-78321-2023');
-    setField('verify-ref',      'ref',         'VRF-20231115-8472A');
+      function formatDate(d) {
+        const parts = d.split("-");
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        return `${parseInt(parts[2])} ${months[parseInt(parts[1]) - 1]} ${parts[0]}`;
+      }
 
-    // Status: ?status=invalid shows invalid card
-    const status = params.get('status');
-    if (status === 'invalid' || status === 'expired') {
-      document.getElementById('status-card').classList.add('invalid');
-      document.getElementById('status-icon').textContent = '✕';
-      document.getElementById('status-icon').classList.add('invalid');
-      document.getElementById('status-heading').textContent =
-        status === 'expired' ? 'Certificate Expired' : 'Certificate Not Found';
-      document.getElementById('status-sub').textContent =
-        'This certificate could not be verified. Please contact the Registrar\'s Office.';
-      document.getElementById('validity-pill').textContent = status === 'expired' ? 'Expired' : 'Not Valid';
-      document.getElementById('validity-pill').style.background = '#fef2f2';
-      document.getElementById('validity-pill').style.borderColor = '#fecaca';
-      document.getElementById('validity-pill').style.color = '#dc2626';
-      document.getElementById('validity-pill').style.setProperty('--dot-color', '#ef4444');
-    }
-  </script>
+      setTimeout(() => {
+        if (!code) {
+          resultDiv.innerHTML = `
+                <div class="status-box status-invalid animate-in">
+                    <div class="status-icon">⚠️</div>
+                    <div class="status-body">
+                        <h2>No Verification Code Supplied</h2>
+                        <p>A valid certificate code must be provided via QR code scan or URL parameter. Please verify that the code has been included in the request.</p>
+                    </div>
+                </div>
+            `;
+        } else if (certificates[code]) {
+          const c = certificates[code];
+          const now = new Date();
+          const verDate = now.toLocaleDateString("en-ZA", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+          const verTime = now.toLocaleTimeString("en-ZA", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
 
-</body>
+          resultDiv.innerHTML = `
+                <!-- Status -->
+                <div class="status-box status-valid animate-in">
+                    <div class="status-icon">✅</div>
+                    <div class="status-body">
+                        <h2>Record Found on the NLRD</h2>
+                        <p>The learner achievement referenced below has been located on SAQA's National Learners' Records Database and is confirmed as authentic.</p>
+                        <span class="status-ref">NLRD STATUS: ${c.status}</span>
+                    </div>
+                </div>
+
+                <!-- Learner Details -->
+                <div class="animate-in-delay">
+                    <div class="section-label">Learner Information</div>
+                    <div class="details-panel" style="margin-bottom:24px">
+                        <div class="details-header">
+                            Verified Learner Record
+                            <span class="details-header-badge">AUTHENTICATED</span>
+                        </div>
+                        <div class="details-grid">
+                            <div class="detail-cell">
+                                <div class="detail-key">Learner Full Name</div>
+                                <div class="detail-val highlight">${c.name}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Identity / Student Number</div>
+                                <div class="detail-val mono">${c.idNumber}</div>
+                            </div>
+                            <div class="detail-cell full-width" style="border-bottom:1px solid var(--saqa-border)">
+                                <div class="detail-key">Qualification Title</div>
+                                <div class="detail-val highlight">${c.qualification}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Qualification / Programme Code</div>
+                                <div class="detail-val mono">${c.qualCode}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">NQF Level</div>
+                                <div class="detail-val">
+                                    <span class="nqf-badge">NQF Level <strong>${c.nqfLevel}</strong></span>
+                                </div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Certificate Reference Number</div>
+                                <div class="detail-val mono">${c.certNumber}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Certificate Code</div>
+                                <div class="detail-val mono">${code}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Date Awarded</div>
+                                <div class="detail-val">${formatDate(c.dateIssued)}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Awarding Institution</div>
+                                <div class="detail-val">${c.institution}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Verified By</div>
+                                <div class="detail-val">${c.authority}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">Province / Region</div>
+                                <div class="detail-val">${c.province}, ${c.country}</div>
+                            </div>
+                            <div class="detail-cell">
+                                <div class="detail-key">NLRD Record Status</div>
+                                <div class="detail-val" style="color:var(--saqa-green);font-weight:600;">${c.status} ✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Authenticated Stamp -->
+                <div class="animate-in-delay2">
+                    <div class="section-label">Verification Confirmation</div>
+                    <div class="found-stamp">
+                        <div class="stamp-icon"></div>
+                        <div class="stamp-body">
+                            <strong>SAQA NLRD — Record Verified &amp; Authenticated</strong>
+                            <p>This learner's achievement has been verified against the National Learners' Records Database (NLRD) and is confirmed as a legitimate qualification recorded on the National Qualifications Framework (NQF).</p>
+                            <div class="ts">Verification Date: ${verDate} &nbsp;|&nbsp; Time: ${verTime} &nbsp;|&nbsp; Reference: NLRD-VER-${Date.now()}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="animate-in-delay3">
+                    <div class="disclaimer">
+                        <strong>Important Notice:</strong> This verification result reflects information recorded on SAQA's National Learners' Records Database at the time of query. SAQA's response is limited to qualifications registered on the NQF. Short courses, professional designations and foreign qualifications are not included in this service. For enquiries, contact <strong>verifications@saqa-rsa.online</strong>.
+                    </div>
+                </div>
+            `;
+        } else {
+          resultDiv.innerHTML = `
+                <div class="status-box status-invalid animate-in">
+                    <div class="status-icon">❌</div>
+                    <div class="status-body">
+                        <h2>Record Not Found on the NLRD</h2>
+                        <p>Certificate code <strong>${code}</strong> was not located on SAQA's National Learners' Records Database. SAQA's result for this query is: <strong>NOT FOUND</strong>.</p>
+                        <p style="margin-top:10px;">This may indicate that the qualification has not been registered on the NQF, the certificate was not issued by an accredited institution, or the certificate code is incorrect. Please contact the awarding institution to confirm the validity of the certificate.</p>
+                        <span class="status-ref">NLRD STATUS: NOT FOUND</span>
+                    </div>
+                </div>
+                <div class="disclaimer" style="margin-top:0">
+                    For further assistance contact <strong>verifications@saqa-rsa.online</strong> or visit <strong>www.saqa-rsa.online</strong>.
+                </div>
+            `;
+        }
+      }, 1800);
+    </script>
+  </body>
 </html>
