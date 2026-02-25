@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="Head1">
+    <title>VeriSearch - Login</title>
+
+    <style type="text/css">
+      .style1 {
+        width: 402px;
+      }
+      .style2 {
+        width: 296px;
+      }
+    </style>
+  </head>
+  <body bgcolor="#F7F6F3">
+    <form
+      name="form1"
+      method="post"
+      action="login.aspx?ReturnUrl=%2fSearchPage.aspx"
+      onsubmit="javascript:return WebForm_OnSubmit();"
+      id="form1"
+    >
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input
+          type="hidden"
+          name="__EVENTARGUMENT"
+          id="__EVENTARGUMENT"
+          value=""
+        />
+        <input
+          type="hidden"
+          name="__VIEWSTATE"
+          id="__VIEWSTATE"
+          value="/wEPDwUKLTY3NDczNjczMWRk7GtpEvanXoNqVWzTrUPpDtOUu3w="
+        />
+      </div>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms["form1"];
+        if (!theForm) {
+          theForm = document.form1;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+          if (!theForm.onsubmit || theForm.onsubmit() != false) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+          }
+        }
+        //]]>
+      </script>
+
+      <script
+        src="/WebResource.axd?d=YL-Oc7eDFg_k9Adxuujbm93ALx2MFBtEqmSgDTtHpNNoy0TvVj6_TRs1144IDWkJnfADcw0NJFtcTBlUTFvYYuHAd7I1&amp;t=636271743297880478"
+        type="text/javascript"
+      ></script>
+
+      <script
+        src="/WebResource.axd?d=--CoRPcVzcL8JortKsXDi-B8Q1w3_6XIUry1tuAD6sLItaccjRpMU8wazegfu1d-9TMhiTJBWjjUdkf0vRc3YTJyURw1&amp;t=636271743297880478"
+        type="text/javascript"
+      ></script>
+      <script type="text/javascript">
+        //<![CDATA[
+        function WebForm_OnSubmit() {
+          if (
+            typeof ValidatorOnSubmit == "function" &&
+            ValidatorOnSubmit() == false
+          )
+            return false;
+          return true;
+        }
+        //]]>
+      </script>
+
+      <div>
+        <input
+          type="hidden"
+          name="__VIEWSTATEGENERATOR"
+          id="__VIEWSTATEGENERATOR"
+          value="C2EE9ABB"
+        />
+        <input
+          type="hidden"
+          name="__EVENTVALIDATION"
+          id="__EVENTVALIDATION"
+          value="/wEWBAKEmaOCCQKl4af/CQL+pLH2BALG8NGxD+F1by/+ypGm7MHKt9L30gjadBPm"
+        />
+      </div>
+      <div align="center">
+        <table width="100%">
+          <tr>
+            <td align="left">
+              <img
+                id="Image1"
+                src="images/VeriSearchLogo.gif"
+                align="left"
+                style="height: 80px; width: 210px; border-width: 0px"
+              />
+            </td>
+          </tr>
+        </table>
+        <br />
+        <table
+          id="Login"
+          cellspacing="0"
+          cellpadding="0"
+          cellspacing="0"
+          bgcolor="#F7F6F3"
+          border="Solid"
+          border="0"
+          style="
+            color: #333333;
+            border-color: #999999;
+            font-family: Verdana;
+            font-size: Small;
+            height: 143px;
+            width: 405px;
+            border-collapse: collapse;
+            border-width: 1px;
+            border-collapse: collapse;
+          "
+        >
+          <tr>
+            <td>
+              <table cellspacing="0">
+                <tr>
+                  <td class="style1">
+                    <table
+                      cellpadding="0"
+                      style="
+                        border-color: #cccccc;
+                        border-style: none;
+                        height: 22px;
+                        width: 403px;
+                      "
+                    >
+                      <tr>
+                        <td
+                          align="center"
+                          style="
+                            color: White;
+                            background-color: #5d7b9d;
+                            font-size: 0.9em;
+                            font-weight: bold;
+                          "
+                        >
+                          VeriSearch LogIn
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td align="left">&nbsp;</td>
+                        <td
+                          class="style2"
+                          align="left"
+                          style="font-size: medium"
+                        ></td>
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td align="right">
+                          <label for="Login_UserName" id="Login_UserNameLabel"
+                            >Please enter your e-mail address:</label
+                          >
+                        </td>
+                        <td align="left">
+                          <input
+                            name="Login$UserName"
+                            type="text"
+                            id="Login_UserName"
+                            style="font-size: 0.8em; width: 250px"
+                          />
+                          <span
+                            id="Login_UserNameRequired"
+                            title="User Name is required."
+                            style="color: Red; visibility: hidden"
+                            >*</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="right">
+                          <label for="Login_Password" id="Login_PasswordLabel"
+                            >Password:</label
+                          >
+                        </td>
+                        <td align="left">
+                          <input
+                            name="Login$Password"
+                            type="password"
+                            id="Login_Password"
+                            style="font-size: 0.8em; width: 250px"
+                          />
+                          <span
+                            id="Login_PasswordRequired"
+                            title="Password is required."
+                            style="color: Red; visibility: hidden"
+                            >*</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" colspan="2" style="color: Red"></td>
+                      </tr>
+                      <tr>
+                        <td align="right" colspan="2">
+                          <input
+                            type="submit"
+                            name="Login$LoginButton"
+                            value="Log In"
+                            onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("Login$LoginButton", "", true, "Login", "", false, false))'
+                            id="Login_LoginButton"
+                            style="
+                              color: #284775;
+                              background-color: #fffbff;
+                              border-color: #cccccc;
+                              border-width: 1px;
+                              border-style: Solid;
+                              font-family: Verdana;
+                              font-size: 0.8em;
+                            "
+                          />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td align="center" colspan="2">
+              <a id="PasswordRecoveryLink" href="forgetPasswd.aspx"
+                >Forgot password? - Click here</a
+              >
+            </td>
+          </tr>
+        </table>
+        &nbsp;
+      </div>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var Page_Validators = new Array(
+          document.getElementById("Login_UserNameRequired"),
+          document.getElementById("Login_PasswordRequired"),
+        );
+        //]]>
+      </script>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var Login_UserNameRequired = document.all
+          ? document.all["Login_UserNameRequired"]
+          : document.getElementById("Login_UserNameRequired");
+        Login_UserNameRequired.controltovalidate = "Login_UserName";
+        Login_UserNameRequired.errormessage = "User Name is required.";
+        Login_UserNameRequired.validationGroup = "Login";
+        Login_UserNameRequired.evaluationfunction =
+          "RequiredFieldValidatorEvaluateIsValid";
+        Login_UserNameRequired.initialvalue = "";
+        var Login_PasswordRequired = document.all
+          ? document.all["Login_PasswordRequired"]
+          : document.getElementById("Login_PasswordRequired");
+        Login_PasswordRequired.controltovalidate = "Login_Password";
+        Login_PasswordRequired.errormessage = "Password is required.";
+        Login_PasswordRequired.validationGroup = "Login";
+        Login_PasswordRequired.evaluationfunction =
+          "RequiredFieldValidatorEvaluateIsValid";
+        Login_PasswordRequired.initialvalue = "";
+        //]]>
+      </script>
+
+      <script type="text/javascript">
+        //<![CDATA[
+
+        var Page_ValidationActive = false;
+        if (typeof ValidatorOnLoad == "function") {
+          ValidatorOnLoad();
+        }
+
+        function ValidatorOnSubmit() {
+          if (Page_ValidationActive) {
+            return ValidatorCommonOnSubmit();
+          } else {
+            return true;
+          }
+        }
+        //]]>
+      </script>
+    </form>
+    <p>&nbsp;</p>
+  </body>
+</html>

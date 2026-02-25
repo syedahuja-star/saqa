@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title> </title>
+    <style type="text/css">
+      .style4 {
+        text-align: center;
+        font-family: Verdana;
+        font-size: small;
+      }
+      .style6 {
+        width: 348px;
+      }
+      .style7 {
+      }
+    </style>
+  </head>
+  <body bgcolor="#F7F6F3">
+    <form
+      name="form1"
+      method="post"
+      action="forgetPasswd.aspx"
+      onsubmit="javascript:return WebForm_OnSubmit();"
+      onkeypress="javascript:return WebForm_FireDefaultButton(event, 'SubmitButton')"
+      id="form1"
+    >
+      <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input
+          type="hidden"
+          name="__EVENTARGUMENT"
+          id="__EVENTARGUMENT"
+          value=""
+        />
+        <input
+          type="hidden"
+          name="__VIEWSTATE"
+          id="__VIEWSTATE"
+          value="/wEPDwUIOTU2OTMwNDVkZPGcGn3++YgamsKQiYy1ZiRL3Dul"
+        />
+      </div>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms["form1"];
+        if (!theForm) {
+          theForm = document.form1;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+          if (!theForm.onsubmit || theForm.onsubmit() != false) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+          }
+        }
+        //]]>
+      </script>
+
+      <script
+        src="/WebResource.axd?d=YL-Oc7eDFg_k9Adxuujbm93ALx2MFBtEqmSgDTtHpNNoy0TvVj6_TRs1144IDWkJnfADcw0NJFtcTBlUTFvYYuHAd7I1&amp;t=636271743297880478"
+        type="text/javascript"
+      ></script>
+
+      <script
+        src="/WebResource.axd?d=--CoRPcVzcL8JortKsXDi-B8Q1w3_6XIUry1tuAD6sLItaccjRpMU8wazegfu1d-9TMhiTJBWjjUdkf0vRc3YTJyURw1&amp;t=636271743297880478"
+        type="text/javascript"
+      ></script>
+      <script
+        src="/WebResource.axd?d=ewuOpTWee1bgtIbt2AjiQbtD38-xUmwBUgnDUciaqvdPKWIuFx4GwDwnYkqUCA4sYvnR24hNk3xKuIXyrAprG-K-LOQ1&amp;t=636271743297880478"
+        type="text/javascript"
+      ></script>
+      <script type="text/javascript">
+        //<![CDATA[
+        function WebForm_OnSubmit() {
+          if (
+            typeof ValidatorOnSubmit == "function" &&
+            ValidatorOnSubmit() == false
+          )
+            return false;
+          return true;
+        }
+        //]]>
+      </script>
+
+      <div>
+        <input
+          type="hidden"
+          name="__VIEWSTATEGENERATOR"
+          id="__VIEWSTATEGENERATOR"
+          value="A82C7654"
+        />
+        <input
+          type="hidden"
+          name="__EVENTVALIDATION"
+          id="__EVENTVALIDATION"
+          value="/wEWBALEwqmRDwKvruq2CAKQ9M/rBQKyuOLUC8cYQ7OugxX1vr1jCfUBiSZp8zza"
+        />
+      </div>
+      <div align="center">
+        <table width="100%">
+          <tr>
+            <td align="left">
+              <img
+                id="Image2"
+                src="images/VeriSearchLogo.gif"
+                align="left"
+                style="height: 80px; width: 210px; border-width: 0px"
+              />
+            </td>
+          </tr>
+        </table>
+        <br />
+        <table
+          cellspacing="0"
+          style="border-width: 1px; border-collapse: collapse; width: 453px"
+          bgcolor="#F7F6F3"
+          border="Solid"
+        >
+          <tr>
+            <td style="border-style: solid; border-width: 1px">
+              <table cellpadding="0">
+                <tr>
+                  <td
+                    align="center"
+                    colspan="2"
+                    style="
+                      color: White;
+                      background-color: #5d7b9d;
+                      font-weight: bold;
+                    "
+                    class="style4"
+                  >
+                    Forgot Your Password?
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="left" class="style7" colspan="2">
+                    To request the system to reset your password and send an
+                    e-mail that provides you with your login and password
+                    information please supply your email address and click the
+                    submit button.
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">&nbsp;&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td align="left" class="style7">
+                    <p style="width: 158px">Please enter your email address:</p>
+                  </td>
+                  <td class="style6">
+                    <input
+                      name="UserName"
+                      type="text"
+                      id="UserName"
+                      style="width: 295px"
+                    />
+
+                    <span
+                      id="RequiredFieldValidator2"
+                      style="color: Red; visibility: hidden"
+                      >*</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" colspan="2" style="color: Red">
+                    <span id="FailureText"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="right" class="style7">&nbsp;</td>
+                  <td align="right" class="style6">
+                    <input
+                      type="submit"
+                      name="btnCancel"
+                      value="Reset"
+                      onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("btnCancel", "", true, "", "", false, false))'
+                      id="btnCancel"
+                      style="width: 59px; margin-left: 0px"
+                    />
+                    <input
+                      type="submit"
+                      name="SubmitButton"
+                      value="Submit"
+                      onclick='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("SubmitButton", "", true, "", "", false, false))'
+                      id="SubmitButton"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var Page_Validators = new Array(
+          document.getElementById("RequiredFieldValidator2"),
+        );
+        //]]>
+      </script>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        var RequiredFieldValidator2 = document.all
+          ? document.all["RequiredFieldValidator2"]
+          : document.getElementById("RequiredFieldValidator2");
+        RequiredFieldValidator2.controltovalidate = "UserName";
+        RequiredFieldValidator2.errormessage = "*";
+        RequiredFieldValidator2.evaluationfunction =
+          "RequiredFieldValidatorEvaluateIsValid";
+        RequiredFieldValidator2.initialvalue = "";
+        //]]>
+      </script>
+
+      <script type="text/javascript">
+        //<![CDATA[
+
+        var Page_ValidationActive = false;
+        if (typeof ValidatorOnLoad == "function") {
+          ValidatorOnLoad();
+        }
+
+        function ValidatorOnSubmit() {
+          if (Page_ValidationActive) {
+            return ValidatorCommonOnSubmit();
+          } else {
+            return true;
+          }
+        }
+        WebForm_AutoFocus("SubmitButton"); //]]>
+      </script>
+    </form>
+    <p>&nbsp;</p>
+  </body>
+</html>
